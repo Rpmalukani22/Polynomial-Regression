@@ -19,4 +19,11 @@ regressor.fit(X,y)
 regressor.predict(np.array([[6.5]]))
 
 plt.scatter(X,y,color="red")
-plt.plot(X,regressor.predict(X),color="blue")
+#plt.plot(X,regressor.predict(X),color="blue")
+
+from sklearn.preprocessing import PolynomialFeatures
+poly = PolynomialFeatures(degree=4)
+X_poly=poly.fit_transform(X)
+regressor_poly = LinearRegression()
+regressor_poly.fit(X_poly,y)
+plt.plot(X,regressor_poly.predict(X_poly),color="blue")
